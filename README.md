@@ -10,6 +10,7 @@ Usage
     <script src="normalizeconsole.min.js"></script>
     <script>
         console.group('Play around');
+        console.time('timer');
 
         console.log('hello'); // does not blow up if IE console is closed
 
@@ -21,6 +22,7 @@ Usage
         console.warn();
         console.error();
 
+        console.timeEnd('timer');
         console.groupEnd();
     </script>
 ```
