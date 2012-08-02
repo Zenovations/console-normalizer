@@ -18,6 +18,8 @@
 
             console.clear && console.clear();
 
+            console.time('All Tests');
+
             console.group('Test Functions');
                 console.log('console.log');
                 console.info('console.info');
@@ -31,6 +33,10 @@
                 console.log.apply(console, ['console.log.apply']);
                 console.error.call(console, 'console.error.call');
                 console.error.apply(console, ['console.error.apply']);
+            console.groupEnd();
+
+            console.group('Time and TimeEnd');
+            console.timeEnd('All Tests');
             console.groupEnd();
 
             appendMessage('Completed all tests');

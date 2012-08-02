@@ -5,10 +5,39 @@
     * Create some dummy functions if we need to, so we don't have to if/else everything
     *********************************************************************************************/
    console||(console = window.console = {
-      log: function() {},
-      info: function() {},
-      warn: function() {},
-      error: function() {}
+      // all this "a, b, c, d, e" garbage is to make the IDEs happy, since they can't do variable argument lists
+      /**
+       * @param a
+       * @param [b]
+       * @param [c]
+       * @param [d]
+       * @param [e]
+       */
+      log: function(a, b, c, d, e) {},
+      /**
+       * @param a
+       * @param [b]
+       * @param [c]
+       * @param [d]
+       * @param [e]
+       */
+      info: function(a, b, c, d, e) {},
+      /**
+       * @param a
+       * @param [b]
+       * @param [c]
+       * @param [d]
+       * @param [e]
+       */
+      warn: function(a, b, c, d, e) {},
+      /**
+       * @param a
+       * @param [b]
+       * @param [c]
+       * @param [d]
+       * @param [e]
+       */
+      error: function(a, b, c, d, e) {}
    });
 
    // le sigh, IE, oh IE, how we fight... fix Function.prototype.bind as needed
@@ -20,14 +49,14 @@
          }
 
          var aArgs = Array.prototype.slice.call(arguments, 1),
-               fToBind = this,
-               fNOP = function () {},
-               fBound = function () {
-                  return fToBind.apply(this instanceof fNOP
-                        ? this
-                        : oThis || window,
-                        aArgs.concat(Array.prototype.slice.call(arguments)));
-               };
+            fToBind = this,
+            fNOP = function () {},
+            fBound = function () {
+               return fToBind.apply(this instanceof fNOP
+                  ? this
+                  : oThis || window,
+                  aArgs.concat(Array.prototype.slice.call(arguments)));
+            };
 
          fNOP.prototype = this.prototype;
          fBound.prototype = new fNOP();
@@ -49,11 +78,28 @@
    /**
     * Support group and groupEnd functions
     */
-   ('group' in console) || (console.group = function(msg) {
-      console.log("\n------------\n"+msg+"\n------------");
+   ('group' in console) ||
+   (console.group = function(msg) {
+      console.info("\n------------\n"+msg+"\n------------");
    });
-   ('groupEnd' in console) || (console.groupEnd = function() {
+   ('groupEnd' in console) ||
+   (console.groupEnd = function() {
       //console.log("\n\n");
    });
+
+   /**
+    * Support time and timeEnd functions
+    */
+   ('time' in console) ||
+   (function() {
+      var trackedTimes = {};
+      console.time = function(msg) {
+         trackedTimes[msg] = new Date().getTime();
+      };
+      console.timeEnd = function(msg) {
+         var end = new Date().getTime(), time = (msg in trackedTimes)? end - trackedTimes[msg] : 0;
+         console.info(msg+': '+time+'ms')
+      }
+   }());
 
 })(window.console);

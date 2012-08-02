@@ -28,7 +28,13 @@ Usage
 What it fixes
 -------------
 
-IE 8 & 9's console objects are a bit... well, it's IE, our favorite stepchild. To be fair, Chrome has a few similar issues which are fixed by this utility as well.
+IE 8 & 9's console objects are a bit... well, it's IE, our favorite stepchild. To be fair, Chrome has a few similar issues which are fixed by this utility as well. Here's a quick summary, with details below:
+
+ * window.console available in IE, even if it is closed
+ * console.log/info/warn/error.apply work in IE and Chrome
+ * console.time and console.timeEnd supported
+ * console.group and console.groupEnd supported
+ * Function.prototype.bind added if it doesn't exist (for IE 8)
 
 ### console is null or not an object
 
@@ -37,6 +43,10 @@ The `window.console` object is only availble in IE 8/9 when it is opened; this i
 ### console.group and console.groupEnd
 
 Implements compatible functions for `group` and `groupEnd`
+
+### console.time and console.timeEnd
+
+Implements compatible functions for `time` and `timeEnd`
 
 ### Function.prototype.apply
 
