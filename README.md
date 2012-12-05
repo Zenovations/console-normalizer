@@ -63,6 +63,13 @@ Compatibility
 
 Compatible with everything after IE 5.5
 
+Contributing
+------------
+
+Clone, modify, and submit pull requests via [GitHub](https://github.com/katowulf/console-normalizer).
+
+To create the minimized file, use [Dean Edward's packer](http://dean.edwards.name/packer/).
+
 License
 -------
 (The MIT License)
