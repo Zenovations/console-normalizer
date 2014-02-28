@@ -64,6 +64,10 @@
    /**
     * Support group and groupEnd functions
     */
+   ('groupCollapsed' in console) ||
+   (console.groupCollapsed = function(msg) {
+      console.info("\n------------\n"+msg+"\n------------");
+   });
    ('group' in console) ||
    (console.group = function(msg) {
       console.info("\n------------\n"+msg+"\n------------");

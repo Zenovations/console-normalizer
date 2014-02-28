@@ -19,7 +19,7 @@
             console.clear && console.clear();
 
             console.time('All Tests');
-
+			
             console.group('Test Functions');
                 console.log('console.log');
                 console.info('console.info');
@@ -33,6 +33,13 @@
                 console.log.apply(console, ['console.log.apply']);
                 console.error.call(console, 'console.error.call');
                 console.error.apply(console, ['console.error.apply']);
+            console.groupEnd();
+			
+			console.groupCollapsed('Test Collapsed Functions');
+                console.log('console.log');
+                console.info('console.info');
+                console.warn('console.warn');
+                console.error('console.error');
             console.groupEnd();
 
             console.group('Time and TimeEnd');
